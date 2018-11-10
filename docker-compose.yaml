@@ -1,5 +1,12 @@
 version: '3'
 services:
+  mysql:
+    image: mysql:8.0.13
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - "./mysql-data:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
   app:
     build: .
     volumes:
@@ -7,3 +14,6 @@ services:
     ports:
       - "3000:3000"
     tty: true
+    depends_on:
+      - mysql
+
