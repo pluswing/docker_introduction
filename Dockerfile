@@ -1,6 +1,7 @@
-FROM ruby:2.5.3-stretch
+FROM ruby:2.7.1-buster
 
 RUN gem install rails
 
 RUN apt-get update && \
-    apt-get install -y nodejs
+    apt-get install -y nodejs npm
+RUN npm install -g yarn
